@@ -1,4 +1,4 @@
-# Insgtall
+# Install
 `$ pip install "git+https://github.com/hacchuu0119/pip_packages.git#egg=kms_wrapper&subdirectory=kms_wrapper"`
 
 # Use
