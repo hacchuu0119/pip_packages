@@ -1,5 +1,5 @@
 # Insgtall
-`$ pip install "git+https://github.com/hacchuu0119/pip_packages.git#egg=weather&subdirectory=kms_wrapper"`
+`$ pip install "git+https://github.com/hacchuu0119/pip_packages.git#egg=kms_wrapper&subdirectory=kms_wrapper"`
 
 # Use
 
@@ -16,6 +16,7 @@ from kms_wrapper import decrypt
 plain_data = decrypt(kms_client, encrypt_data, encrypt_data_key)
 ```
 
+# How
 ## AES Mode
 If you want change AES_MODE
 
