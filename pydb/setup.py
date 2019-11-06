@@ -5,9 +5,9 @@ setuptools.setup(
     version="0.1.1",
     packages=setuptools.find_packages(),
     install_requires=[
-        "sqlalchemy"
-        "mysqlclient"
-        "cx_Oracle"
+        "sqlalchemy",
+        "mysqlclient",
+        "cx_Oracle",
     ],
     classifiers=[
         "Programming Language :: Python :: 3.7",
