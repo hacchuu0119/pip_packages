@@ -1,4 +1,3 @@
-import boto3
 import Cryptodome.Cipher.AES as AES
 from Cryptodome import Random
 
@@ -46,21 +45,3 @@ def decrypt(kms_client, iv_cipher, encrypt_data_key, aes_mode=AES.MODE_CBC):
     iv, cipher = iv_cipher[:AES.block_size], iv_cipher[AES.block_size:]
 
     return __create_aes(data_key, iv, aes_mode).decrypt(cipher).decode('utf-8').rstrip('\x00')
-
-
-if __name__ == '__main__':
-    aws_kms_client = boto3.client('kms', region_name='',
-                                  aws_access_key_id='',
-                                  aws_secret_access_key='')
-
-    from kms_wrapper.kms_wrapper import encrypt, decrypt
-
-    enc_data, enc_data_key = encrypt(aws_kms_client, '', 'password')
-
-    print(f'enc_data: {enc_data}, enc_data_key: {enc_data_key}')
-
-    decrypt_data = decrypt(aws_kms_client, enc_data, enc_data_key)
-
-    print(f'decrypt_data: {decrypt_data}')
-
-

@@ -2,11 +2,10 @@ import setuptools
 
 setuptools.setup(
     name="kms_wrapper",
-    version="0.1.0",
+    version="0.1.1",
     packages=setuptools.find_packages(),
     install_requires=[
         "pycryptodomex",
-        "boto3"
     ],
     classifiers=[
         "Programming Language :: Python :: 3.7-3.8",
