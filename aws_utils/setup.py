@@ -1,8 +1,8 @@
 import setuptools
 
 setuptools.setup(
-    name="ssm_util",
-    version="0.1.0",
+    name="aws_utils",
+    version="0.2.0",
     packages=setuptools.find_packages(),
     install_requires=[],
     classifiers=[
