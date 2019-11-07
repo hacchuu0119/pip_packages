@@ -12,7 +12,7 @@ If the parameter store has a hierarchical structure,
  the key and value can be acquired in a dictionary by specifying the absolute path above the hierarchy with the parameter key you want to acquire.
 
 ```python
-from ssm_util import get_parameters_by_path
+from aws_utils import get_parameters_by_path
 
 param_store_path = '/param/store/path/'
 
@@ -20,8 +20,7 @@ response_dict = get_parameters_by_path(ssm_client, param_store_path)
 ```
 
 
-# Argument
-## ssm_client
+### Argument
 `ssm_client` is bot3 ssm client.
 ```python
 import boto3
@@ -31,6 +30,16 @@ aws_ssm_client = boto3.client('ssm', region_name='your_region',
                               aws_secret_access_key='your_secret_access_key')
 ``` 
 
+## s3_put_object_with_partition
+Save objects to S3 without generating a file.
+
+Specify variables separately to specify partitions using hive.
+
+```python
+from aws_utils import s3_put_object_with_partition
+
+s3_put_object_with_partition(s3_resource, 'your-backet', 'your-prefix', 'partition_column', 'file-name')
+```
 
 
 
