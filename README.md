@@ -7,3 +7,6 @@
 
 ## [aws_utils](https://github.com/hacchuu0119/pip_packages/tree/master/aws_utils)
 `$ pip install "git+https://github.com/hacchuu0119/pip_packages.git#egg=aws_utils&subdirectory=aws_utils"`
+
+## [dms_ctl](https://github.com/hacchuu0119/pip_packages/tree/master/dms_ctl)
+`$ pip install  "git+https://github.com/hacchuu0119/pip_packages.git#egg=dms_ctl&subdirectory=dms_ctl"`

@@ -49,13 +49,7 @@ class DMSCtl:
                 TargetEndpointArn=target_endpoint_arn,
                 ReplicationInstanceArn=replication_instance_arn,
                 MigrationType=migration_type,
-                TableMappings=table_mapping_json,
-                Tags=[
-                    {
-                        'Key': '',
-                        'Value': ''
-                    },
-                ]
+                TableMappings=table_mapping_json
             )
         except:
             print("faild: create replication task")
@@ -118,11 +112,9 @@ class DMSCtl:
 
         # 開始している場合終了処理
         if self.get_replication_task_status(create_filter_dic('replication-task-arn',
-                                                              task_arn))[0]['Status'] != 'stopped' and \
+                                                              task_arn))[0]['Status'] == 'running' and \
                 self.get_replication_task_status(create_filter_dic('replication-task-arn',
-                                                                   task_arn))[0]['Status'] != 'stopping' and \
-                self.get_replication_task_status(create_filter_dic('replication-task-arn',
-                                                                   task_arn))[0]['Status'] != 'error':
+                                                                   task_arn))[0]['Status'] == 'starting':
             self.dms_client.stop_replication_task(ReplicationTaskArn=task_arn)
             self._wait_replication_task_status(task_arn, 'stopped')
 
@@ -140,7 +132,7 @@ class DMSCtl:
 
         new_task_arn = create_task_status['ReplicationTask']['ReplicationTaskArn']
 
-        self._wait_replication_task_status(new_task_arn, 'Ready')
+        self._wait_replication_task_status(new_task_arn, 'ready')
 
         self.start_replication_task(new_task_arn)
 
@@ -183,11 +175,3 @@ class DMSCtl:
             raise
 
         return response
-
-
-if __name__ == '__main__':
-    # session = boto3.session.Session(region_name='ap-northeast-1',
-    #                                 aws_access_key_id='',
-    #                                 aws_secret_access_key='')
-    # dms = DMSCtl(session)
-
