@@ -112,7 +112,7 @@ class DMSCtl:
 
         # 開始している場合終了処理
         if self.get_replication_task_status(create_filter_dic('replication-task-arn',
-                                                              task_arn))[0]['Status'] == 'running' and \
+                                                              task_arn))[0]['Status'] == 'running' or \
                 self.get_replication_task_status(create_filter_dic('replication-task-arn',
                                                                    task_arn))[0]['Status'] == 'starting':
             self.dms_client.stop_replication_task(ReplicationTaskArn=task_arn)
